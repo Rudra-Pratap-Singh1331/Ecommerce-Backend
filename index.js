@@ -34,9 +34,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "http://localhost:5175",
+      "https://retailer-dashboardai.vercel.app",
+      "https://customerai-theta.vercel.app",
     ],
     credentials: true,
   })
@@ -45,15 +44,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 
-// ✅ Setup HTTP server for Socket.IO
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "http://localhost:5175",
-    ],
+    origin: "https://customerai-theta.vercel.app",
     credentials: true,
   },
 });
