@@ -3,7 +3,7 @@ import express from "express";
 import User from "../model/UserModel.js";
 import generateToken from "../utils/generateToken.js";
 import bcrypt from "bcryptjs";
-import protect from "../middleware/authmiddleware.js";
+import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 

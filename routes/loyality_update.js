@@ -1,7 +1,7 @@
 // routes/user.js
 import express from "express";
 import User from "../model/UserModel.js";
-import protect from "../middleware/authmiddleware.js";
+import protect from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 // ✅ PUT /api/users/update-loyalty
@@ -21,7 +21,6 @@ router.put("/update-loyalty", protect, async (req, res) => {
 
     res.json({ message: "Loyalty points updated", loyaltyPoints: newPoints });
   } catch (err) {
-
     res.status(500).json({ message: "Failed to update loyalty points" });
   }
 });

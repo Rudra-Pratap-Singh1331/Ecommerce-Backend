@@ -2,7 +2,7 @@ import express from "express";
 import ProductSold from "../model/productSoldModel.js";
 import Product from "../model/productModel.js";
 import Carts from "../model/CartModel.js";
-import protect from "../middleware/authmiddleware.js";
+import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
