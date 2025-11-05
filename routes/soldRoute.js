@@ -68,7 +68,7 @@ router.post("/add", protect, async (req, res) => {
 
     res.status(201).json({ message: "Products purchased and recorded" });
   } catch (err) {
-    console.error("Sales error:", err);
+
     res.status(500).json({ message: "Failed to complete sale", error: err.message });
   }
 });

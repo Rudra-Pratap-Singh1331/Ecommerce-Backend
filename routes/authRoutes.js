@@ -44,7 +44,7 @@ router.post("/register", async (req, res) => {
       },
     });
   } catch (err) {
-    console.error("🛑 Registration error:", err);
+
     res.status(500).json({ msg: "Server error", error: err.message });
   }
 });
@@ -63,12 +63,10 @@ router.post("/login", async (req, res) => {
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
-    console.log("🧪 Login Debug:");
-console.log("Entered password:", password);
-console.log("Stored hash:", user.password);
+    
 
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log("result :" ,isMatch);
+
     if (!isMatch) {
       return res.status(401).json({ msg: "Invalid password" });
     }
@@ -84,7 +82,7 @@ console.log("Stored hash:", user.password);
       },
     });
   } catch (err) {
-    console.error("Login error:", err.message);
+   
     res.status(500).json({ msg: "Login failed", error: err.message });
   }
 });

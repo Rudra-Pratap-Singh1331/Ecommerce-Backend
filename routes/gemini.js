@@ -98,8 +98,7 @@ also gove answer related to genral question that are not the part of dashboard u
 
     res.status(200).json({ output });
   } catch (err) {
-    console.error("Gemini error:", err.message);
-    res.status(500).json({ error: "Failed to generate content" });
+     res.status(500).json({ error: "Failed to generate content" });
   }
 });
 

@@ -43,7 +43,7 @@ now userInput is : ${command}
   })
   return result.data.candidates[0].content.parts[0].text;
 }catch(error){
-  console.log(error.message)
+
 }
 }
 export default geminiResponse;

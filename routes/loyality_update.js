@@ -21,7 +21,7 @@ router.put("/update-loyalty", protect, async (req, res) => {
 
     res.json({ message: "Loyalty points updated", loyaltyPoints: newPoints });
   } catch (err) {
-    console.error("Loyalty update error:", err.message);
+
     res.status(500).json({ message: "Failed to update loyalty points" });
   }
 });

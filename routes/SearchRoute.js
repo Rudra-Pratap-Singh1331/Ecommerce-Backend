@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
 
     res.json(products);
   } catch (error) {
-    console.error("Search error:", error.message);
+  
     res.status(500).json({ error: "Search failed" });
   }
 });

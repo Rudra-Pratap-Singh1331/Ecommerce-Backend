@@ -19,7 +19,7 @@ router.post("/ingredient-info", async (req, res) => {
     const parsed = JSON.parse(output);
     res.json({ ...parsed });
   } catch (err) {
-    console.error("Parse error:", err.message);
+
     res.json({ raw: output, message: "Failed to parse structured response, showing raw" });
   }
 });

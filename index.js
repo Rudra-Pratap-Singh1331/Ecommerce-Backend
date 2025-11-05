@@ -53,12 +53,12 @@ app.set("io", io);
 
 
 io.on("connection", (socket) => {
-  console.log("🟢 A user connected:", socket.id);
+
 
   
   socket.on("join-cart", (cartId) => {
     socket.join(cartId);
-    console.log(`🔗 Socket ${socket.id} joined cart room ${cartId}`);
+
   });
 
   socket.on("cart-update", ({ cartId, updatedCart }) => {
@@ -67,12 +67,12 @@ io.on("connection", (socket) => {
 
   socket.on("join-collaboration", (cartId) => {
     socket.join(cartId);
-    console.log(`🤝 Socket ${socket.id} joined collaboration cart ${cartId}`);
+  
   });
 
   socket.on("leave-collaboration", (cartId) => {
     socket.leave(cartId);
-    console.log(`🚪 Socket ${socket.id} left collaboration cart ${cartId}`);
+
   });
 
   socket.on("loyalty-used", ({ cartId, useLoyalty }) => {
@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    console.log("🔴 User disconnected:", socket.id);
+ 
   });
 });
 

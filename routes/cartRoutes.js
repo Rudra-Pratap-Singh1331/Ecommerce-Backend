@@ -60,7 +60,7 @@ router.post("/add", protect, async (req, res) => {
 
     res.status(200).json({ message: "Item added to cart", cart });
   } catch (err) {
-    console.error("Add error:", err.message);
+
     res.status(500).json({ message: "Add to cart failed", error: err.message });
   }
 });
@@ -79,7 +79,7 @@ router.get("/get/:cartId", async (req, res) => {
 
     if (!cart) {
       cart = await Carts.create({ cartId, products: [] });
-      console.log("✅ New empty cart created:", cartId);
+ 
     }
 
     const transformed = cart.products.map((p) => ({
@@ -94,7 +94,7 @@ router.get("/get/:cartId", async (req, res) => {
 
     res.json({ cartId: cart.cartId, products: transformed });
   } catch (err) {
-    console.error("Get cart error:", err.message);
+   
     res.status(500).json({ message: "Failed to get cart", error: err.message });
   }
 });
@@ -136,7 +136,7 @@ router.post("/update", async (req, res) => {
 
     res.status(200).json({ message: "Cart updated", products: transformed });
   } catch (err) {
-    console.error("Update error:", err.message);
+  
     res.status(500).json({ message: "Update cart failed", error: err.message });
   }
 });

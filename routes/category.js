@@ -11,7 +11,7 @@ router.get("/category/:category", async (req, res) => {
 
     res.status(200).json(products);
   } catch (error) {
-    console.error("Error fetching category products:", error);
+
     res.status(500).json({ message: "Server Error" });
   }
 });

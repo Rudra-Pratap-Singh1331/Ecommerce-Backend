@@ -25,7 +25,7 @@ router.get("/migrate-imgurl", async (req, res) => {
       updated: updatedCount,
     });
   } catch (error) {
-    console.error("Migration error:", error);
+   
     res.status(500).json({ message: "Migration failed", error: error.message });
   }
 });

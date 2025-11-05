@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
 
     res.status(200).json({ message: "Restocked successfully", updated });
   } catch (err) {
-    console.error("Restock error:", err.message);
+
     res.status(500).json({ error: "Server error" });
   }
 });

@@ -48,7 +48,7 @@ const profit = (product.price - product.costprice) * item.quantity;
 
     res.status(201).json({ message: "Products marked as sold" });
   } catch (err) {
-    console.error("Sales error:", err.message);
+
     res.status(500).json({ message: "Failed to add sales", error: err.message });
   }
 });

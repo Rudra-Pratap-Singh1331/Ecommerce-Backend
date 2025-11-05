@@ -12,7 +12,7 @@ router.get("/loyalty", async (req, res) => {
 
     res.status(200).json({ loyaltyPoints });
   } catch (err) {
-    console.error("Error fetching loyalty:", err.message);
+
     res.status(500).json({ message: "Failed to fetch loyalty points" });
   }
 });
