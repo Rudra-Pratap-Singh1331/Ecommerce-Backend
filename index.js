@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import connectDb from "../backend/config/db.js";
+import connectDb from "./config/db.js";
 import cors from "cors";
 import bodyParser from "body-parser";
 import http from "http";
@@ -31,34 +31,38 @@ dotenv.config();
 const app = express();
 
 // ✅ Use middlewares
-app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:5175",
+    ],
+    credentials: true,
+  })
+);
 app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+app.use(bodyParser.json({ limit: "10mb" }));
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 
 // ✅ Setup HTTP server for Socket.IO
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:5175",
+    ],
     credentials: true,
   },
 });
 
-
 app.set("io", io);
 
-
 io.on("connection", (socket) => {
-
-
-  
   socket.on("join-cart", (cartId) => {
     socket.join(cartId);
-
   });
 
   socket.on("cart-update", ({ cartId, updatedCart }) => {
@@ -67,23 +71,18 @@ io.on("connection", (socket) => {
 
   socket.on("join-collaboration", (cartId) => {
     socket.join(cartId);
-  
   });
 
   socket.on("leave-collaboration", (cartId) => {
     socket.leave(cartId);
-
   });
 
   socket.on("loyalty-used", ({ cartId, useLoyalty }) => {
     io.to(cartId).emit("loyalty-used", useLoyalty);
   });
 
-  socket.on("disconnect", () => {
- 
-  });
+  socket.on("disconnect", () => {});
 });
-
 
 app.use("/api/gemini", gemini);
 app.use("/api/dashboard", dashBoardRoute);
@@ -101,8 +100,7 @@ app.use("/api/search", searchRoute);
 app.use("/api/auth", authRoutes);
 app.use("/api/sales", purchasedRoute);
 app.use("/api/users", userRoutes);
-app.use("/api/ai",ingredient);
-
+app.use("/api/ai", ingredient);
 
 app.get("/", async (req, res) => {
   const prompt = req.query.prompt;
@@ -110,7 +108,6 @@ app.get("/", async (req, res) => {
   res.json(data);
 });
 app.use("/api/ai", geminifinal);
-
 
 const Port = process.env.PORT || 5000;
 server.listen(Port, () => {
